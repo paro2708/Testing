@@ -22,4 +22,11 @@ class UrinalsTest {
         assertEquals(false, urinals.validateInput(testString));
     }
 
+    @Test
+    void validateInput_Test3() {
+        System.out.println("====== Paromita Roy == TEST THREE EXECUTED =======");
+        Urinals urinals = new Urinals();
+        String testString = "101010101010101010101";
+        assertEquals(false, urinals.validateInput(testString));
+    }
 }
