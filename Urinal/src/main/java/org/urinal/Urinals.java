@@ -8,13 +8,14 @@ import java.util.ArrayList;
  */
 public class Urinals {
 
+    // Driver code
     public static void main(String[] args) throws IOException {
-        int maxUrinals = -1;
+        int maxUrinals;
         ArrayList<String> fileContent = getString();
         ArrayList<Integer> resultUrinals = new ArrayList<>();
         for(String input : fileContent) {
             boolean res = validateInput(input);
-            if (res == true) {
+            if (res) {
                 maxUrinals = countUrinals(input);
             } else {
                 maxUrinals = -1;
@@ -25,14 +26,17 @@ public class Urinals {
         writeToOutputFile(resultUrinals);
     }
 
+    // This method is responsible for writing the results to a file.
+    // If rule.txt exists, it creates a new file- rule1.txt and writes to it.
+    // If rule'x'.txt exists, it creates a new file- rule'x'.txt and writes to it.
     public static void writeToOutputFile(ArrayList<Integer> result) throws IOException {
         File file = new File("rule.txt");
         int i = 1;
-        FileWriter writer = null;
-        if(file.exists() == true) {
+        FileWriter writer;
+        if(file.exists()) {
             String currFile = "rule" + i + ".txt";
             File f = new File(currFile);
-            while(f.exists() == true) {
+            while(f.exists()) {
                 i++;
                 currFile = "rule" + i + ".txt";
                 f = new File(currFile);
@@ -48,6 +52,9 @@ public class Urinals {
         writer.close();
     }
 
+    // This method validates the input strings to check whether they consist
+    // purely of 0s and 1s, and also checks that there no two consecutive
+    // urinals that are occupied.
     public static boolean validateInput(String input) {
         boolean res = true;
 
@@ -70,9 +77,12 @@ public class Urinals {
         }
         return res;
     }
+
+    // This function calculates the maximum count of urinals that can be used
+    // according to the rule.
     public static int countUrinals(String input) {
         int count = 0;
-        int i = 0;
+        int i;
 
         for(i=1; i<input.length()-1; i++) {
             if(input.charAt(i-1) == '0' && input.charAt(i) == '0' && input.charAt(i+1) == '0') {
@@ -83,7 +93,7 @@ public class Urinals {
         return count;
     }
 
-    // Fetches the string from the console and validates it.
+    // Fetches the string from urinal.dat and stores the inputs into an arraylist.
     public static ArrayList<String> getString() {
         BufferedReader r;
         ArrayList<String> inputs = new ArrayList<>();
