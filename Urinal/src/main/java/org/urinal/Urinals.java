@@ -98,7 +98,7 @@ public class Urinals {
         BufferedReader r;
         ArrayList<String> inputs = new ArrayList<>();
         try {
-            r = new BufferedReader(new FileReader("C:\\Users\\Paromita Roy\\Documents\\Fall22\\SER515\\Assignments\\Testing\\Urinal\\src\\main\\java\\org\\urinal\\urinals.dat"));
+            r = new BufferedReader(new FileReader("urinals.dat"));
             String line = r.readLine();
 
             while(line != null) {
