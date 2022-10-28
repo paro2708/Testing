@@ -1,18 +1,17 @@
 package org.urinal;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * @author Paromita Roy
  */
 public class Urinals {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         int maxUrinals = -1;
         ArrayList<String> fileContent = getString();
+        ArrayList<Integer> resultUrinals = new ArrayList<>();
         for(String input : fileContent) {
             boolean res = validateInput(input);
             if (res == true) {
@@ -20,14 +19,33 @@ public class Urinals {
             } else {
                 maxUrinals = -1;
             }
-            writeToOutputFile(maxUrinals);
+            resultUrinals.add(maxUrinals);
             System.out.println("Maximum number of urinals is " + maxUrinals);
         }
-//        System.out.println("Maximum number of urinals is " + maxUrinals);
+        writeToOutputFile(resultUrinals);
     }
 
-    public static void writeToOutputFile(int result) {
-
+    public static void writeToOutputFile(ArrayList<Integer> result) throws IOException {
+        File file = new File("rule.txt");
+        int i = 1;
+        FileWriter writer = null;
+        if(file.exists() == true) {
+            String currFile = "rule" + i + ".txt";
+            File f = new File(currFile);
+            while(f.exists() == true) {
+                i++;
+                currFile = "rule" + i + ".txt";
+                f = new File(currFile);
+            }
+            writer = new FileWriter(currFile);
+        } else {
+            writer = new FileWriter("rule.txt");
+        }
+        for(Integer res : result) {
+            writer.write(res.toString());
+            writer.write("\n");
+        }
+        writer.close();
     }
 
     public static boolean validateInput(String input) {
@@ -83,10 +101,6 @@ public class Urinals {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Enter string consisting of 1s and 0s. Do not enter spaces.");
-//
-//        String input = sc.nextLine();
 
         return inputs;
     }
