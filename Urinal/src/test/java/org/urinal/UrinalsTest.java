@@ -15,6 +15,14 @@ class UrinalsTest {
     }
 
     @Test
+    void countUrinals_Test2() {
+        System.out.println("====== Paromita Roy == TEST TWO EXECUTED =======");
+        Urinals urinals = new Urinals();
+        String testString = "00000";
+        assertEquals(3, urinals.countUrinals(testString));
+    }
+
+    @Test
     void validateInput_Test2() {
         System.out.println("====== Paromita Roy == TEST TWO EXECUTED =======");
         Urinals urinals = new Urinals();
@@ -32,7 +40,7 @@ class UrinalsTest {
 
     @Test
     void validateInput_Test4() {
-        System.out.println("====== Paromita Roy == TEST THREE EXECUTED =======");
+        System.out.println("====== Paromita Roy == TEST FOUR EXECUTED =======");
         Urinals urinals = new Urinals();
         String testString = "011";
         assertEquals(false, urinals.validateInput(testString));
