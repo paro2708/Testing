@@ -11,7 +11,8 @@ public class Urinals {
     // Driver code
     public static void main(String[] args) throws IOException {
         int maxUrinals;
-        ArrayList<String> fileContent = getString();
+        String file = "urinals.dat";
+        ArrayList<String> fileContent = getString(file);
         ArrayList<Integer> resultUrinals = new ArrayList<>();
         for(String input : fileContent) {
             boolean res = validateInput(input);
@@ -94,11 +95,11 @@ public class Urinals {
     }
 
     // Fetches the string from urinal.dat and stores the inputs into an arraylist.
-    public static ArrayList<String> getString() {
+    public static ArrayList<String> getString(String file) throws FileNotFoundException {
         BufferedReader r;
         ArrayList<String> inputs = new ArrayList<>();
         try {
-            r = new BufferedReader(new FileReader("urinals.dat"));
+            r = new BufferedReader(new FileReader(file));
             String line = r.readLine();
 
             while(line != null) {
@@ -107,9 +108,9 @@ public class Urinals {
             }
             r.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            throw new FileNotFoundException("File not found");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
         return inputs;

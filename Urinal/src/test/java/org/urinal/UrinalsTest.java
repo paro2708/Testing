@@ -2,6 +2,9 @@ package org.urinal;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UrinalsTest {
@@ -68,5 +71,17 @@ class UrinalsTest {
         Urinals urinals = new Urinals();
         String testString = "0101";
         assertTrue(urinals.validateInput(testString));
+    }
+
+    @Test
+    void validateFileName_Test9() {
+        System.out.println("====== Paromita Roy == TEST NINE EXECUTED =======");
+        Urinals urinals = new Urinals();
+        Exception thrown = assertThrows(
+                Exception.class,
+                () -> urinals.getString("abc.dat"),
+                "Should have thrown file not found exception, but didn't");
+        System.out.println(thrown.getMessage());
+        assertTrue(thrown.getMessage().contains("File not found"));
     }
 }
