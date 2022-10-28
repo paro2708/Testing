@@ -31,26 +31,34 @@ class UrinalsTest {
     }
 
     @Test
-    void validateInput_Test2() {
-        System.out.println("====== Paromita Roy == TEST TWO EXECUTED =======");
+    void validateInput_Test4() {
+        System.out.println("====== Paromita Roy == TEST FOUR EXECUTED =======");
         Urinals urinals = new Urinals();
         String testString = "aabbcc";
         assertEquals(false, urinals.validateInput(testString));
     }
 
     @Test
-    void validateInput_Test3() {
-        System.out.println("====== Paromita Roy == TEST THREE EXECUTED =======");
+    void validateInput_Test5() {
+        System.out.println("====== Paromita Roy == TEST FIVE EXECUTED =======");
         Urinals urinals = new Urinals();
         String testString = "101010101010101010101";
         assertEquals(false, urinals.validateInput(testString));
     }
 
     @Test
-    void validateInput_Test4() {
-        System.out.println("====== Paromita Roy == TEST FOUR EXECUTED =======");
+    void validateInput_Test6() {
+        System.out.println("====== Paromita Roy == TEST SIX EXECUTED =======");
         Urinals urinals = new Urinals();
         String testString = "011";
         assertEquals(false, urinals.validateInput(testString));
+    }
+
+    @Test
+    void countUrinals_Test7() {
+        System.out.println("====== Paromita Roy == TEST SEVEN EXECUTED =======");
+        Urinals urinals = new Urinals();
+        String testString = "0000";
+        assertEquals(2, urinals.countUrinals(testString));
     }
 }
