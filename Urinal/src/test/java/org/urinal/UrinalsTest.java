@@ -35,7 +35,7 @@ class UrinalsTest {
         System.out.println("====== Paromita Roy == TEST FOUR EXECUTED =======");
         Urinals urinals = new Urinals();
         String testString = "aabbcc";
-        assertEquals(false, urinals.validateInput(testString));
+        assertFalse(urinals.validateInput(testString));
     }
 
     @Test
@@ -43,7 +43,7 @@ class UrinalsTest {
         System.out.println("====== Paromita Roy == TEST FIVE EXECUTED =======");
         Urinals urinals = new Urinals();
         String testString = "101010101010101010101";
-        assertEquals(false, urinals.validateInput(testString));
+        assertFalse(urinals.validateInput(testString));
     }
 
     @Test
@@ -51,7 +51,7 @@ class UrinalsTest {
         System.out.println("====== Paromita Roy == TEST SIX EXECUTED =======");
         Urinals urinals = new Urinals();
         String testString = "011";
-        assertEquals(false, urinals.validateInput(testString));
+        assertFalse(urinals.validateInput(testString));
     }
 
     @Test
@@ -60,5 +60,13 @@ class UrinalsTest {
         Urinals urinals = new Urinals();
         String testString = "0000";
         assertEquals(2, urinals.countUrinals(testString));
+    }
+
+    @Test
+    void validateInput_Test8() {
+        System.out.println("====== Paromita Roy == TEST EIGHT EXECUTED =======");
+        Urinals urinals = new Urinals();
+        String testString = "0101";
+        assertTrue(urinals.validateInput(testString));
     }
 }
