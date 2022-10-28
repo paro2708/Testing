@@ -27,12 +27,14 @@ public class Urinals {
             return res;
         } else {
             for (int i = 0; i < input.length(); i++) {
-
-                if(!(input.charAt(i) == '0' || input.charAt(i) == '1')) {
+                if(i==0) {
+                    if(input.charAt(0) == '1' && input.charAt(1) == '1') {
+                        res = false;
+                    }
+                } else if(input.charAt(i) == '1' && input.charAt(i-1) == '1') {
                     res = false;
-                    return res;
                 }
-                if(input.charAt(i) == '1' && input.charAt(i+1) == '1') {
+                if(!(input.charAt(i) == '0' || input.charAt(i) == '1')) {
                     res = false;
                 }
             }
