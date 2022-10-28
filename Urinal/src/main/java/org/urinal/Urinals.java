@@ -15,8 +15,6 @@ public class Urinals {
             maxUrinals = countUrinals(input);
         } else {
             maxUrinals = -1;
-            System.out.println("Bad input.");
-            System.exit(0);
         }
         System.out.println("Maximum number of urinals is " + maxUrinals);
     }
@@ -29,9 +27,13 @@ public class Urinals {
             return res;
         } else {
             for (int i = 0; i < input.length(); i++) {
+
                 if(!(input.charAt(i) == '0' || input.charAt(i) == '1')) {
                     res = false;
                     return res;
+                }
+                if(input.charAt(i) == '1' && input.charAt(i+1) == '1') {
+                    res = false;
                 }
             }
         }
@@ -46,11 +48,11 @@ public class Urinals {
                 count++;
                 input.replace(input.charAt(i), '1');
             }
-            if(input.charAt(i) == '1' && input.charAt(i+1) == '1') {
-                count = -1;
-                System.out.println("-1");
-                System.exit(0);
-            }
+//            if(input.charAt(i) == '1' && input.charAt(i+1) == '1') {
+//                count = -1;
+//                System.out.println("-1");
+//                System.exit(0);
+//            }
         }
         System.out.println("Count is " + count);
         return count;
